@@ -1,0 +1,52 @@
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h1>⚔️ Matches</h1>
+      <p class="page-meta">{{ filtered().length }} matches shown</p>
+    </div>
+    <div class="filter-tabs" role="group" aria-label="Filter by mode">
+      @for (f of filters; track f) {
+        <button
+          class="filter-tab"
+          [class.active]="activeFilter() === f"
+          (click)="setFilter(f)">
+          {{ f }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <div class="table-card">
+    <table class="data-table" aria-label="Match history">
+      <thead>
+        <tr>
+          <th>Match ID</th>
+          <th>Player 1</th>
+          <th>Player 2</th>
+          <th>Winner</th>
+          <th>Mode</th>
+          <th>Score</th>
+          <th>Duration</th>
+          <th>When</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (m of filtered(); track m.id) {
+          <tr>
+            <td class="match-id">{{ m.id }}</td>
+            <td [class.winner-name]="m.winner === m.player1">{{ m.player1 }}</td>
+            <td [class.winner-name]="m.winner === m.player2">{{ m.player2 }}</td>
+            <td class="winner-cell">{{ m.winner }}</td>
+            <td><span class="mode-badge" [class]="modeClass(m.mode)">{{ m.mode }}</span></td>
+            <td class="score-cell">{{ m.score }}</td>
+            <td class="duration-cell">{{ m.duration }}</td>
+            <td class="date-cell">{{ m.date }}</td>
+          </tr>
+        }
+        @if (filtered().length === 0) {
+          <tr class="empty-row"><td colspan="8">No matches found</td></tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

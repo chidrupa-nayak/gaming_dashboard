@@ -1,0 +1,18 @@
+<header class="header">
+  <div class="header-left">
+    <h1 class="page-title">Game Dashboard</h1>
+    <span class="live-badge">
+      <span class="pulse"></span>LIVE
+    </span>
+  </div>
+
+  <div class="header-right">
+    <div class="time-block">
+      <span class="clock">{{ currentTime() | date:'HH:mm:ss' }}</span>
+      <span class="updated">Updated {{ lastUpdated() | date:'shortTime' }}</span>
+    </div>
+    <button class="refresh-btn" (click)="refresh()" aria-label="Refresh dashboard data">
+      ↻ Refresh
+    </button>
+  </div>
+</header>

@@ -1,0 +1,18 @@
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 28px;
+}
+
+.bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 24px;
+}
+
+@media (max-width: 1000px) {
+  .bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}

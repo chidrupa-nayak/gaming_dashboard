@@ -1,0 +1,41 @@
+<div class="leaderboard-card">
+  <div class="card-header">
+    <h2>🏆 Leaderboard</h2>
+    <span class="subtitle">Top {{ players().length }} players this week</span>
+  </div>
+
+  <table class="leaderboard-table" aria-label="Player leaderboard">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Player</th>
+        <th>Score</th>
+        <th>W/L</th>
+        <th>Win Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (player of players(); track player.rank) {
+        <tr [class]="rankClass(player.rank)">
+          <td class="rank-cell">{{ rankMedal(player.rank) }}</td>
+          <td class="player-cell">
+            <span class="avatar">{{ player.avatar }}</span>
+            {{ player.name }}
+          </td>
+          <td class="score-cell">{{ player.score | number }}</td>
+          <td class="wl-cell">
+            <span class="wins">{{ player.wins }}W</span>
+            <span class="sep">/</span>
+            <span class="losses">{{ player.losses }}L</span>
+          </td>
+          <td class="wr-cell">
+            <div class="wr-bar-wrap">
+              <div class="wr-bar" [style.width.%]="player.winRate"></div>
+            </div>
+            <span class="wr-label">{{ player.winRate }}%</span>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
