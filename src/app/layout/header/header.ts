@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { GameDataService } from '../../core/services/game-data.service';
+import { GameDataService, INTERVAL_MS } from '../../core/services/game-data.service';
 
 @Component({
   selector: 'app-header',
@@ -12,19 +12,29 @@ import { GameDataService } from '../../core/services/game-data.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   private gameData = inject(GameDataService);
 
-  currentTime = signal(new Date());
-  private timer?: ReturnType<typeof setInterval>;
+  currentTime  = signal(new Date());
+  lastUpdated  = this.gameData.lastUpdated;
 
-  get lastUpdated() {
-    return this.gameData.lastUpdated;
+  private clockTimer?:   ReturnType<typeof setInterval>;
+  private refreshTimer?: ReturnType<typeof setInterval>;
+
+  constructor() {
+    effect(() => {
+      const ms = INTERVAL_MS[this.gameData.refreshInterval()];
+      clearInterval(this.refreshTimer);
+      if (ms > 0) {
+        this.refreshTimer = setInterval(() => this.gameData.refreshData(), ms);
+      }
+    });
   }
 
   ngOnInit(): void {
-    this.timer = setInterval(() => this.currentTime.set(new Date()), 1000);
+    this.clockTimer = setInterval(() => this.currentTime.set(new Date()), 1000);
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.timer);
+    clearInterval(this.clockTimer);
+    clearInterval(this.refreshTimer);
   }
 
   refresh(): void {
