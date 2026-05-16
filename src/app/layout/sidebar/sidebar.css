@@ -1,0 +1,97 @@
+.sidebar {
+  width: 220px;
+  min-height: 100vh;
+  background: var(--graphite);
+  border-right: 1px solid rgba(125, 226, 209, 0.12);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.sidebar.collapsed {
+  width: 64px;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 16px;
+  border-bottom: 1px solid rgba(125, 226, 209, 0.12);
+}
+
+.logo {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.brand {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--pearl-aqua);
+  white-space: nowrap;
+}
+
+.toggle-btn {
+  margin-left: auto;
+  background: none;
+  border: 1px solid rgba(125, 226, 209, 0.2);
+  color: var(--pearl-aqua);
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.toggle-btn:hover {
+  background: rgba(125, 226, 209, 0.08);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 8px;
+  gap: 4px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: rgba(255, 250, 251, 0.45);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  background: rgba(125, 226, 209, 0.08);
+  color: var(--snow);
+}
+
+.nav-item.active {
+  background: rgba(51, 153, 137, 0.22);
+  color: var(--pearl-aqua);
+}
+
+.nav-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+
+.nav-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}

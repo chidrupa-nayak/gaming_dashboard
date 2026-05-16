@@ -1,0 +1,54 @@
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h1>🏆 Leaderboard</h1>
+      <p class="page-meta">{{ filtered().length }} players ranked this season</p>
+    </div>
+    <input
+      class="search-input"
+      type="text"
+      placeholder="Search players…"
+      [value]="searchTerm()"
+      (input)="onSearch($event)"
+      aria-label="Search players"
+    />
+  </div>
+
+  <div class="table-card">
+    <table class="data-table" aria-label="Player leaderboard">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Score</th>
+          <th>Wins</th>
+          <th>Losses</th>
+          <th>Win Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (p of filtered(); track p.rank) {
+          <tr [class]="rankClass(p.rank)">
+            <td class="rank-cell">{{ rankMedal(p.rank) }}</td>
+            <td class="player-cell">
+              <span class="avatar">{{ p.avatar }}</span>
+              {{ p.name }}
+            </td>
+            <td class="score-cell">{{ p.score | number }}</td>
+            <td class="wins-cell">{{ p.wins }}</td>
+            <td class="losses-cell">{{ p.losses }}</td>
+            <td class="wr-cell">
+              <div class="wr-bar-wrap">
+                <div class="wr-bar" [style.width.%]="p.winRate"></div>
+              </div>
+              <span class="wr-label">{{ p.winRate }}%</span>
+            </td>
+          </tr>
+        }
+        @if (filtered().length === 0) {
+          <tr class="empty-row"><td colspan="6">No players match "{{ searchTerm() }}"</td></tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

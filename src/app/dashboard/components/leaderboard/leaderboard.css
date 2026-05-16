@@ -1,0 +1,131 @@
+.leaderboard-card {
+  background: var(--graphite);
+  border: 1px solid rgba(125, 226, 209, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid rgba(125, 226, 209, 0.1);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--snow);
+}
+
+.subtitle {
+  font-size: 0.78rem;
+  color: rgba(255, 250, 251, 0.35);
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.leaderboard-table thead th {
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 250, 251, 0.3);
+  background: var(--onyx);
+}
+
+.leaderboard-table tbody tr {
+  border-top: 1px solid rgba(125, 226, 209, 0.07);
+  transition: background 0.15s;
+}
+
+.leaderboard-table tbody tr:hover {
+  background: rgba(125, 226, 209, 0.05);
+}
+
+.leaderboard-table tbody tr.gold   { border-left: 3px solid #f59e0b; }
+.leaderboard-table tbody tr.silver { border-left: 3px solid #9ca3af; }
+.leaderboard-table tbody tr.bronze { border-left: 3px solid #92400e; }
+
+.leaderboard-table td {
+  padding: 12px 16px;
+  font-size: 0.875rem;
+  color: rgba(255, 250, 251, 0.8);
+}
+
+.rank-cell {
+  font-size: 1rem;
+  width: 56px;
+}
+
+.player-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--snow);
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(51, 153, 137, 0.25);
+  color: var(--pearl-aqua);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.score-cell {
+  font-variant-numeric: tabular-nums;
+  color: var(--pearl-aqua);
+  font-weight: 600;
+}
+
+.wl-cell {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.wins   { color: var(--pearl-aqua); font-weight: 600; }
+.losses { color: #ef4444; font-weight: 600; }
+.sep    { color: rgba(255, 250, 251, 0.2); }
+
+.wr-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wr-bar-wrap {
+  width: 80px;
+  height: 6px;
+  background: rgba(125, 226, 209, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.wr-bar {
+  height: 100%;
+  background: linear-gradient(to right, var(--verdigris), var(--pearl-aqua));
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.wr-label {
+  font-size: 0.78rem;
+  color: rgba(255, 250, 251, 0.45);
+  min-width: 32px;
+}

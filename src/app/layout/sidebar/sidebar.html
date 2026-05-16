@@ -1,0 +1,26 @@
+<aside class="sidebar" [class.collapsed]="collapsed()">
+  <div class="sidebar-header">
+    <span class="logo">🎮</span>
+    @if (!collapsed()) {
+      <span class="brand">GameHub</span>
+    }
+    <button class="toggle-btn" (click)="toggle()"
+      [attr.aria-expanded]="!collapsed()"
+      aria-label="Toggle sidebar">{{ collapsed() ? '›' : '‹' }}</button>
+  </div>
+
+  <nav class="nav" aria-label="Main navigation">
+    @for (item of navItems; track item.route) {
+      <a
+        class="nav-item"
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        [title]="item.label">
+        <span class="nav-icon">{{ item.icon }}</span>
+        @if (!collapsed()) {
+          <span class="nav-label">{{ item.label }}</span>
+        }
+      </a>
+    }
+  </nav>
+</aside>
