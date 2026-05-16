@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-
-type Interval = 'off' | '30s' | '60s' | '5m';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { GameDataService, RefreshInterval } from '../core/services/game-data.service';
 
 @Component({
   selector: 'app-settings',
@@ -10,21 +9,23 @@ type Interval = 'off' | '30s' | '60s' | '5m';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsComponent {
-  refreshInterval = signal<Interval>('60s');
+  private gameData = inject(GameDataService);
+
+  refreshInterval = this.gameData.refreshInterval;
   compactMode     = signal(false);
   showAvatars     = signal(true);
   showWinRate     = signal(true);
   saved           = signal(false);
 
-  readonly intervals: { value: Interval; label: string }[] = [
+  readonly intervals: { value: RefreshInterval; label: string }[] = [
     { value: 'off', label: 'Off'    },
     { value: '30s', label: '30 sec' },
     { value: '60s', label: '1 min'  },
     { value: '5m',  label: '5 min'  },
   ];
 
-  setInterval(v: Interval): void {
-    this.refreshInterval.set(v);
+  setInterval(v: RefreshInterval): void {
+    this.gameData.refreshInterval.set(v);
   }
 
   toggle(s: ReturnType<typeof signal<boolean>>): void {

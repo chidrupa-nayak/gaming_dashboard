@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: gaming-dashboard-api
+    runtime: node
+    region: oregon
+    plan: free
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        fromDatabase:
+          name: gaming-dashboard-db
+          property: connectionString
+
+databases:
+  - name: gaming-dashboard-db
+    plan: free
