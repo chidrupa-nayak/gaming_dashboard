@@ -1,4 +1,5 @@
 <div class="app-shell">
+  <div class="mobile-backdrop" [class.visible]="layout.mobileMenuOpen()" (click)="layout.closeMobileMenu()"></div>
   <app-sidebar />
   <div class="main-area">
     <app-header />

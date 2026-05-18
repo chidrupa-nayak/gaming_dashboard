@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { LayoutService } from '../../core/services/layout.service';
 
 interface NavItem {
   label: string;
@@ -15,7 +16,9 @@ interface NavItem {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SidebarComponent {
+  private layout = inject(LayoutService);
   collapsed = signal(false);
+  mobileMenuOpen = this.layout.mobileMenuOpen;
 
   readonly navItems: NavItem[] = [
     { label: 'Dashboard', icon: '📊', route: '/dashboard' },
@@ -28,5 +31,9 @@ export class SidebarComponent {
 
   toggle(): void {
     this.collapsed.update(v => !v);
+  }
+
+  closeMenu(): void {
+    this.layout.closeMobileMenu();
   }
 }
