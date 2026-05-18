@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal, WritableSignal } from '@angular/core';
 import { GameDataService, RefreshInterval } from '../core/services/game-data.service';
 import { SettingsService } from '../core/services/settings.service';
 
@@ -27,7 +27,7 @@ export class SettingsComponent {
     this.gameData.refreshInterval.set(v);
   }
 
-  toggle(s: ReturnType<typeof signal<boolean>>): void {
+  toggle(s: WritableSignal<boolean>): void {
     s.update(v => !v);
   }
 
