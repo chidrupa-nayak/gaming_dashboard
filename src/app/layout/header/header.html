@@ -11,8 +11,8 @@
       <span class="clock">{{ currentTime() | date:'HH:mm:ss' }}</span>
       <span class="updated">Updated {{ lastUpdated() | date:'shortTime' }}</span>
     </div>
-    <button class="refresh-btn" (click)="refresh()" aria-label="Refresh dashboard data">
-      ↻ Refresh
+    <button class="refresh-btn" (click)="refresh()" [disabled]="loading()" aria-label="Refresh dashboard data">
+      @if (loading()) { <span class="spinner"></span> } @else { ↻ } Refresh
     </button>
   </div>
 </header>

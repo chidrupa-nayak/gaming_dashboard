@@ -24,7 +24,7 @@
 
 .settings-section {
   background: var(--graphite);
-  border: 1px solid rgba(125, 226, 209, 0.1);
+  border: 1px solid rgba(17, 24, 39, 0.1);
   border-radius: 12px;
   overflow: hidden;
 }
@@ -34,9 +34,9 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255, 250, 251, 0.3);
+  color: rgba(17, 24, 39, 0.4);
   padding: 14px 20px 10px;
-  border-bottom: 1px solid rgba(125, 226, 209, 0.08);
+  border-bottom: 1px solid rgba(17, 24, 39, 0.07);
   background: var(--onyx);
 }
 
@@ -46,7 +46,7 @@
   justify-content: space-between;
   gap: 20px;
   padding: 16px 20px;
-  border-top: 1px solid rgba(125, 226, 209, 0.07);
+  border-top: 1px solid rgba(17, 24, 39, 0.06);
 }
 
 .setting-row:first-of-type { border-top: none; }
@@ -58,7 +58,7 @@
 }
 
 .setting-label { font-size: 0.9rem; font-weight: 600; color: var(--snow); }
-.setting-desc  { font-size: 0.78rem; color: rgba(255, 250, 251, 0.4); }
+.setting-desc  { font-size: 0.78rem; color: rgba(17, 24, 39, 0.45); }
 
 /* Interval button group */
 .interval-group {
@@ -68,9 +68,9 @@
 }
 
 .interval-btn {
-  background: rgba(125, 226, 209, 0.06);
-  border: 1px solid rgba(125, 226, 209, 0.15);
-  color: rgba(255, 250, 251, 0.5);
+  background: rgba(17, 24, 39, 0.04);
+  border: 1px solid rgba(17, 24, 39, 0.15);
+  color: rgba(17, 24, 39, 0.5);
   padding: 6px 14px;
   border-radius: 7px;
   cursor: pointer;
@@ -79,7 +79,7 @@
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
-.interval-btn:hover  { background: rgba(125, 226, 209, 0.1); color: var(--snow); }
+.interval-btn:hover  { background: rgba(17, 24, 39, 0.07); color: var(--snow); }
 .interval-btn.active { background: rgba(51, 153, 137, 0.22); border-color: var(--verdigris); color: var(--pearl-aqua); }
 
 /* Toggle switch */
@@ -87,8 +87,8 @@
   width: 42px;
   height: 24px;
   border-radius: 12px;
-  background: rgba(255, 250, 251, 0.1);
-  border: 1px solid rgba(255, 250, 251, 0.15);
+  background: rgba(17, 24, 39, 0.1);
+  border: 1px solid rgba(17, 24, 39, 0.15);
   cursor: pointer;
   position: relative;
   flex-shrink: 0;
@@ -107,7 +107,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: rgba(255, 250, 251, 0.5);
+  background: rgba(17, 24, 39, 0.35);
   transition: transform 0.2s, background 0.2s;
 }
 
@@ -121,12 +121,12 @@
   display: flex;
   justify-content: space-between;
   padding: 13px 20px;
-  border-top: 1px solid rgba(125, 226, 209, 0.07);
+  border-top: 1px solid rgba(17, 24, 39, 0.06);
   font-size: 0.875rem;
 }
 
 .about-section .about-row:first-of-type { border-top: none; }
-.about-section .about-row span:first-child { color: rgba(255, 250, 251, 0.45); }
+.about-section .about-row span:first-child { color: rgba(17, 24, 39, 0.5); }
 .about-section .about-row span:last-child  { color: var(--snow); }
 
 /* Save button */
@@ -134,7 +134,7 @@
   align-self: flex-start;
   background: var(--verdigris);
   border: none;
-  color: var(--onyx);
+  color: #ffffff;
   padding: 10px 24px;
   border-radius: 8px;
   font-size: 0.9rem;

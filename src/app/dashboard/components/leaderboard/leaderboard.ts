@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { GameDataService } from '../../../core/services/game-data.service';
+import { SettingsService } from '../../../core/services/settings.service';
 
 @Component({
   selector: 'app-leaderboard',
@@ -11,6 +12,7 @@ import { GameDataService } from '../../../core/services/game-data.service';
 })
 export class LeaderboardComponent {
   private gameData = inject(GameDataService);
+  protected settings = inject(SettingsService);
   players = this.gameData.players;
 
   rankMedal(rank: number): string {

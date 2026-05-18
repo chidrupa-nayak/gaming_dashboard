@@ -35,7 +35,7 @@
 .wr-bar-wrap {
   width: 90px;
   height: 6px;
-  background: rgba(125, 226, 209, 0.1);
+  background: rgba(17, 24, 39, 0.1);
   border-radius: 3px;
   overflow: hidden;
 }
@@ -47,8 +47,8 @@
   transition: width 0.5s ease;
 }
 
-.wr-label { font-size: 0.78rem; color: rgba(255, 250, 251, 0.45); min-width: 34px; }
+.wr-label { font-size: 0.78rem; color: rgba(17, 24, 39, 0.5); min-width: 34px; }
 
 tr.gold   { border-left: 3px solid #f59e0b; }
 tr.silver { border-left: 3px solid #9ca3af; }
-tr.bronze { border-left: 3px solid #92400e; }
+tr.bronze { border-left: 3px solid #b45309; }

@@ -1,16 +1,20 @@
 .metrics-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 18px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
+  .metrics-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 500px) {
   .metrics-row { grid-template-columns: 1fr; }
 }
 
 .metric-card {
   background: var(--graphite);
-  border: 1px solid rgba(125, 226, 209, 0.1);
+  border: 1px solid rgba(17, 24, 39, 0.1);
   border-radius: 12px;
   padding: 20px;
   display: flex;
@@ -20,7 +24,8 @@
 
 .metric-icon  { font-size: 1.4rem; }
 .metric-value { font-size: 1.7rem; font-weight: 700; color: var(--pearl-aqua); font-variant-numeric: tabular-nums; }
-.metric-label { font-size: 0.8rem; color: rgba(255, 250, 251, 0.4); text-transform: uppercase; letter-spacing: 0.06em; }
+.metric-sub   { font-size: 0.82rem; color: rgba(17, 24, 39, 0.55); }
+.metric-label { font-size: 0.8rem; color: rgba(17, 24, 39, 0.45); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
 
 .charts-grid {
   display: grid;

@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { GameDataService, RefreshInterval } from '../core/services/game-data.service';
+import { SettingsService } from '../core/services/settings.service';
 
 @Component({
   selector: 'app-settings',
@@ -10,11 +11,9 @@ import { GameDataService, RefreshInterval } from '../core/services/game-data.ser
 })
 export class SettingsComponent {
   private gameData = inject(GameDataService);
+  protected settings = inject(SettingsService);
 
   refreshInterval = this.gameData.refreshInterval;
-  compactMode     = signal(false);
-  showAvatars     = signal(true);
-  showWinRate     = signal(true);
   saved           = signal(false);
 
   readonly intervals: { value: RefreshInterval; label: string }[] = [

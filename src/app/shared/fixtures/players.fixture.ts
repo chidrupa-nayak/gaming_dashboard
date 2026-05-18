@@ -1,12 +1,12 @@
 import { Player } from '../models/game.models';
 
 export const PLAYERS: Player[] = [
-  { rank: 1, name: 'NightHawk99',  score: 48320, wins: 142, losses: 23, winRate: 86, avatar: 'N' },
-  { rank: 2, name: 'ShadowByte',   score: 44105, wins: 128, losses: 31, winRate: 80, avatar: 'S' },
-  { rank: 3, name: 'PixelVortex',  score: 39870, wins: 115, losses: 40, winRate: 74, avatar: 'P' },
-  { rank: 4, name: 'StarlightX',   score: 36450, wins: 102, losses: 45, winRate: 69, avatar: 'S' },
-  { rank: 5, name: 'IronCircuit',  score: 33200, wins:  98, losses: 52, winRate: 65, avatar: 'I' },
-  { rank: 6, name: 'CryptoFang',   score: 29900, wins:  91, losses: 60, winRate: 60, avatar: 'C' },
-  { rank: 7, name: 'QuantumPulse', score: 27450, wins:  87, losses: 65, winRate: 57, avatar: 'Q' },
-  { rank: 8, name: 'NeonRaider',   score: 24800, wins:  80, losses: 70, winRate: 53, avatar: 'N' },
+  { rank: 1, name: 'Virat Kohli',     score: 51200, wins: 158, losses: 22, winRate: 88, avatar: 'V' },
+  { rank: 2, name: 'Rohit Sharma',    score: 46800, wins: 141, losses: 30, winRate: 82, avatar: 'R' },
+  { rank: 3, name: 'MS Dhoni',        score: 42350, wins: 132, losses: 35, winRate: 79, avatar: 'M' },
+  { rank: 4, name: 'Jasprit Bumrah',  score: 37900, wins: 110, losses: 44, winRate: 71, avatar: 'J' },
+  { rank: 5, name: 'Ravindra Jadeja', score: 34100, wins: 101, losses: 51, winRate: 66, avatar: 'R' },
+  { rank: 6, name: 'KL Rahul',        score: 30500, wins:  93, losses: 58, winRate: 62, avatar: 'K' },
+  { rank: 7, name: 'Hardik Pandya',   score: 27200, wins:  85, losses: 67, winRate: 56, avatar: 'H' },
+  { rank: 8, name: 'Shubman Gill',    score: 23800, wins:  76, losses: 74, winRate: 51, avatar: 'S' },
 ];
