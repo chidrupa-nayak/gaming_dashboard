@@ -7,10 +7,11 @@
   </div>
 
   <div class="metrics-row">
-    @for (m of metrics; track m.label) {
+    @for (m of metrics(); track m.label) {
       <div class="metric-card">
         <span class="metric-icon">{{ m.icon }}</span>
         <span class="metric-value">{{ m.value }}</span>
+        @if (m.sub) { <span class="metric-sub">{{ m.sub }}</span> }
         <span class="metric-label">{{ m.label }}</span>
       </div>
     }
@@ -38,7 +39,7 @@
       </div>
       <div class="chart-wrap">
         <canvas baseChart
-          [data]="matchesByModeData"
+          [data]="matchesByModeData()"
           [options]="barOptions"
           type="bar">
         </canvas>

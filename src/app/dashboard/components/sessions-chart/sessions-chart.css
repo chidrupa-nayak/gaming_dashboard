@@ -1,13 +1,13 @@
 .chart-card {
   background: var(--graphite);
-  border: 1px solid rgba(125, 226, 209, 0.1);
+  border: 1px solid rgba(17, 24, 39, 0.1);
   border-radius: 12px;
   overflow: hidden;
 }
 
 .card-header {
   padding: 20px 24px 16px;
-  border-bottom: 1px solid rgba(125, 226, 209, 0.1);
+  border-bottom: 1px solid rgba(17, 24, 39, 0.08);
   display: flex;
   align-items: baseline;
   gap: 12px;
@@ -22,7 +22,7 @@
 
 .subtitle {
   font-size: 0.78rem;
-  color: rgba(255, 250, 251, 0.35);
+  color: rgba(17, 24, 39, 0.4);
 }
 
 .chart-wrap {

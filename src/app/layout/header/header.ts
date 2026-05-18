@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTime  = signal(new Date());
   lastUpdated  = this.gameData.lastUpdated;
+  loading      = this.gameData.loading;
 
   private clockTimer?:   ReturnType<typeof setInterval>;
   private refreshTimer?: ReturnType<typeof setInterval>;

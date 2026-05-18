@@ -13,14 +13,14 @@ router.get('/', async (_req, res) => {
     Player.findOne().sort({ score: -1 }).select('score'),
   ]);
 
-  const activeSessions = sessions.at(-1)?.sessions ?? 0;
+  const weeklySessions = sessions.reduce((sum, s) => sum + s.sessions, 0);
   const topScore       = topPlayer?.score ?? 0;
 
   res.json([
-    { label: 'Total Players',   value: totalPlayers.toLocaleString(), change: 8.2,  icon: '👥', color: 'purple' },
-    { label: 'Active Sessions', value: activeSessions.toString(),     change: 12.5, icon: '🎮', color: 'green'  },
-    { label: 'Total Matches',   value: totalMatches.toLocaleString(), change: 5.1,  icon: '⚔️',  color: 'blue'   },
-    { label: 'Top Score',       value: topScore.toLocaleString(),     change: 3.7,  icon: '🏆', color: 'orange' },
+    { label: 'Total Players',   value: totalPlayers.toLocaleString(),   icon: '👥', color: 'purple' },
+    { label: 'Weekly Sessions', value: weeklySessions.toLocaleString(), icon: '🎮', color: 'green'  },
+    { label: 'Total Matches',   value: totalMatches.toLocaleString(),   icon: '⚔️',  color: 'blue'   },
+    { label: 'Top Score',       value: topScore.toLocaleString(),       icon: '🏆', color: 'orange' },
   ]);
 });
 

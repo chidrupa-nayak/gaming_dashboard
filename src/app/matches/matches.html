@@ -4,17 +4,72 @@
       <h1>⚔️ Matches</h1>
       <p class="page-meta">{{ filtered().length }} matches shown</p>
     </div>
-    <div class="filter-tabs" role="group" aria-label="Filter by mode">
-      @for (f of filters; track f) {
-        <button
-          class="filter-tab"
-          [class.active]="activeFilter() === f"
-          (click)="setFilter(f)">
-          {{ f }}
-        </button>
-      }
+    <div class="head-actions">
+      <div class="filter-tabs" role="group" aria-label="Filter by mode">
+        @for (f of filters; track f) {
+          <button class="filter-tab" [class.active]="activeFilter() === f" (click)="setFilter(f)">{{ f }}</button>
+        }
+      </div>
+      <button class="log-btn" (click)="toggleForm()">
+        {{ showForm() ? '✕ Cancel' : '+ Log Match' }}
+      </button>
     </div>
   </div>
+
+  @if (showForm()) {
+    <div class="form-panel">
+      <h2 class="form-title">Log a Match</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Player 1</label>
+          <select [value]="fPlayer1()" (change)="setPlayer1($event)">
+            <option value="">Select player…</option>
+            @for (p of players(); track p.rank) {
+              <option [value]="p.name">{{ p.name }}</option>
+            }
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Player 2</label>
+          <select [value]="fPlayer2()" (change)="setPlayer2($event)">
+            <option value="">Select player…</option>
+            @for (p of players(); track p.rank) {
+              <option [value]="p.name">{{ p.name }}</option>
+            }
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Winner</label>
+          <select [value]="fWinner()" (change)="setWinner($event)">
+            <option value="">Select winner…</option>
+            @if (fPlayer1()) { <option [value]="fPlayer1()">{{ fPlayer1() }}</option> }
+            @if (fPlayer2()) { <option [value]="fPlayer2()">{{ fPlayer2() }}</option> }
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mode</label>
+          <select [value]="fMode()" (change)="setMode($event)">
+            @for (m of modes; track m) {
+              <option [value]="m">{{ m }}</option>
+            }
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Score <span class="hint">(e.g. 3-1)</span></label>
+          <input type="text" placeholder="3-1" [value]="fScore()" (input)="setScore($event)" />
+        </div>
+        <div class="form-group">
+          <label>Duration <span class="hint">(e.g. 14:22)</span></label>
+          <input type="text" placeholder="14:22" [value]="fDuration()" (input)="setDuration($event)" />
+        </div>
+      </div>
+      <button class="submit-btn"
+        [disabled]="!fPlayer1() || !fPlayer2() || !fWinner() || fPlayer1() === fPlayer2() || submitting()"
+        (click)="submit()">
+        {{ submitting() ? 'Saving…' : 'Save Match' }}
+      </button>
+    </div>
+  }
 
   <div class="table-card">
     <table class="data-table" aria-label="Match history">
@@ -40,7 +95,7 @@
             <td><span class="mode-badge" [class]="modeClass(m.mode)">{{ m.mode }}</span></td>
             <td class="score-cell">{{ m.score }}</td>
             <td class="duration-cell">{{ m.duration }}</td>
-            <td class="date-cell">{{ m.date }}</td>
+            <td class="date-cell">{{ m.date | timeAgo }}</td>
           </tr>
         }
         @if (filtered().length === 0) {

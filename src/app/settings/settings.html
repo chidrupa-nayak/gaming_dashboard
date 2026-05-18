@@ -2,7 +2,7 @@
   <div class="page-head">
     <div>
       <h1>⚙️ Settings</h1>
-      <p class="page-meta">Dashboard preferences</p>
+      <p class="page-meta">Changes apply immediately</p>
     </div>
     @if (saved()) {
       <span class="saved-badge">✓ Saved</span>
@@ -36,19 +36,10 @@
       <h2>Display</h2>
       <div class="setting-row">
         <div class="setting-info">
-          <span class="setting-label">Compact table mode</span>
-          <span class="setting-desc">Reduce row padding for more data on screen</span>
-        </div>
-        <button class="toggle" [class.on]="compactMode()" (click)="toggle(compactMode)" aria-label="Toggle compact mode">
-          <span class="toggle-thumb"></span>
-        </button>
-      </div>
-      <div class="setting-row">
-        <div class="setting-info">
           <span class="setting-label">Show player avatars</span>
           <span class="setting-desc">Display avatar initials in leaderboard rows</span>
         </div>
-        <button class="toggle" [class.on]="showAvatars()" (click)="toggle(showAvatars)" aria-label="Toggle avatars">
+        <button class="toggle" [class.on]="settings.showAvatars()" (click)="toggle(settings.showAvatars)" aria-label="Toggle avatars">
           <span class="toggle-thumb"></span>
         </button>
       </div>
@@ -57,7 +48,7 @@
           <span class="setting-label">Show win-rate bars</span>
           <span class="setting-desc">Visualise win rate as a progress bar</span>
         </div>
-        <button class="toggle" [class.on]="showWinRate()" (click)="toggle(showWinRate)" aria-label="Toggle win rate bars">
+        <button class="toggle" [class.on]="settings.showWinRate()" (click)="toggle(settings.showWinRate)" aria-label="Toggle win rate bars">
           <span class="toggle-thumb"></span>
         </button>
       </div>

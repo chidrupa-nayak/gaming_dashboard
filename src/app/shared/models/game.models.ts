@@ -11,7 +11,6 @@ export interface Player {
 export interface StatCard {
   label: string;
   value: string | number;
-  change: number;
   icon: string;
   color: 'purple' | 'green' | 'blue' | 'orange';
 }
@@ -30,4 +29,12 @@ export interface Match {
   duration: string;
   score: string;
   date: string;
+}
+
+export interface AnalyticsData {
+  matchesByMode: { Ranked: number; Casual: number; Tournament: number };
+  totalMatches: number;
+  mostActiveDay: string;
+  topWinRate:  { name: string; rate: number  } | null;
+  topRanked:   { name: string; score: number } | null;
 }

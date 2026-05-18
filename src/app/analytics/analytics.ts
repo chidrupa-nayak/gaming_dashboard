@@ -13,11 +13,35 @@ import { GameDataService } from '../core/services/game-data.service';
 export class AnalyticsComponent {
   private gameData = inject(GameDataService);
 
-  readonly metrics = [
-    { label: 'Avg Session Duration', value: '24 min', icon: '⏱️' },
-    { label: 'Peak Hour',            value: '9 PM',   icon: '📊' },
-    { label: 'Match Completion',     value: '94.2%',  icon: '✅' },
-  ];
+  readonly metrics = computed(() => {
+    const d = this.gameData.analyticsData();
+    return [
+      {
+        label: 'Champion',
+        value: d?.topRanked ? d.topRanked.name : '—',
+        sub:   d?.topRanked ? `${d.topRanked.score.toLocaleString()} pts` : '',
+        icon: '🥇',
+      },
+      {
+        label: 'Most Active Day',
+        value: d ? d.mostActiveDay : '—',
+        sub:   '',
+        icon: '📅',
+      },
+      {
+        label: 'Top Win Rate',
+        value: d?.topWinRate ? `${d.topWinRate.rate}%` : '—',
+        sub:   d?.topWinRate ? d.topWinRate.name : '',
+        icon: '🏅',
+      },
+      {
+        label: 'Total Matches',
+        value: d ? d.totalMatches.toLocaleString() : '—',
+        sub:   '',
+        icon: '🎮',
+      },
+    ];
+  });
 
   sessionsData = computed<ChartData<'line'>>(() => {
     const sessions = this.gameData.sessions();
@@ -29,7 +53,7 @@ export class AnalyticsComponent {
         borderColor: '#7de2d1',
         backgroundColor: 'rgba(51, 153, 137, 0.15)',
         pointBackgroundColor: '#7de2d1',
-        pointBorderColor: '#2b2c28',
+        pointBorderColor: '#ffffff',
         pointBorderWidth: 2,
         pointRadius: 5,
         fill: true,
@@ -38,21 +62,26 @@ export class AnalyticsComponent {
     };
   });
 
-  matchesByModeData: ChartData<'bar'> = {
-    labels: ['Ranked', 'Casual', 'Tournament'],
-    datasets: [{
-      label: 'Matches Played',
-      data: [42180, 31620, 20520],
-      backgroundColor: [
-        'rgba(51, 153, 137, 0.75)',
-        'rgba(125, 226, 209, 0.45)',
-        'rgba(51, 153, 137, 0.45)',
-      ],
-      borderColor: ['#339989', '#7de2d1', '#339989'],
-      borderWidth: 1,
-      borderRadius: 5,
-    }]
-  };
+  matchesByModeData = computed<ChartData<'bar'>>(() => {
+    const d = this.gameData.analyticsData();
+    return {
+      labels: ['Ranked', 'Casual', 'Tournament'],
+      datasets: [{
+        label: 'Matches Played',
+        data: d
+          ? [d.matchesByMode.Ranked, d.matchesByMode.Casual, d.matchesByMode.Tournament]
+          : [0, 0, 0],
+        backgroundColor: [
+          'rgba(51, 153, 137, 0.75)',
+          'rgba(125, 226, 209, 0.45)',
+          'rgba(51, 153, 137, 0.45)',
+        ],
+        borderColor: ['#339989', '#7de2d1', '#339989'],
+        borderWidth: 1,
+        borderRadius: 5,
+      }]
+    };
+  });
 
   private readonly chartScales: ChartConfiguration['options'] = {
     responsive: true,
@@ -69,14 +98,14 @@ export class AnalyticsComponent {
     },
     scales: {
       x: {
-        grid: { color: 'rgba(125, 226, 209, 0.07)' },
-        ticks: { color: 'rgba(255, 250, 251, 0.35)' },
-        border: { color: 'rgba(125, 226, 209, 0.1)' }
+        grid: { color: 'rgba(17, 24, 39, 0.07)' },
+        ticks: { color: 'rgba(17, 24, 39, 0.45)' },
+        border: { color: 'rgba(17, 24, 39, 0.1)' }
       },
       y: {
-        grid: { color: 'rgba(125, 226, 209, 0.07)' },
-        ticks: { color: 'rgba(255, 250, 251, 0.35)' },
-        border: { color: 'rgba(125, 226, 209, 0.1)' }
+        grid: { color: 'rgba(17, 24, 39, 0.07)' },
+        ticks: { color: 'rgba(17, 24, 39, 0.45)' },
+        border: { color: 'rgba(17, 24, 39, 0.1)' }
       }
     }
   };

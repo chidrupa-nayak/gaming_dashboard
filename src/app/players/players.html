@@ -2,23 +2,49 @@
   <div class="page-head">
     <div>
       <h1>👥 Players</h1>
-      <p class="page-meta">{{ filtered().length }} of {{ 8 }} players</p>
+      <p class="page-meta">{{ filtered().length }} of {{ gameData.players().length }} players</p>
     </div>
-    <input
-      class="search-input"
-      type="text"
-      placeholder="Search players…"
-      [value]="searchTerm()"
-      (input)="onSearch($event)"
-      aria-label="Search players"
-    />
+    <div class="head-actions">
+      <input
+        class="search-input"
+        type="text"
+        placeholder="Search players…"
+        [value]="searchTerm()"
+        (input)="onSearch($event)"
+        aria-label="Search players"
+      />
+      <button class="add-btn" (click)="toggleForm()">
+        {{ showForm() ? '✕ Cancel' : '+ Add Player' }}
+      </button>
+    </div>
   </div>
+
+  @if (showForm()) {
+    <div class="form-panel">
+      <h2 class="form-title">Add a Player</h2>
+      <div class="inline-form">
+        <input
+          type="text"
+          placeholder="Player name…"
+          [value]="fName()"
+          (input)="setName($event)"
+          (keydown.enter)="submit()"
+          class="name-input"
+        />
+        <button class="submit-btn" [disabled]="!fName().trim() || submitting()" (click)="submit()">
+          {{ submitting() ? 'Saving…' : 'Add Player' }}
+        </button>
+      </div>
+    </div>
+  }
 
   <div class="players-grid">
     @for (p of filtered(); track p.rank) {
       <div class="player-card">
         <div class="card-rank">{{ rankMedal(p.rank) }}</div>
-        <div class="avatar">{{ p.avatar }}</div>
+        @if (settings.showAvatars()) {
+          <div class="avatar">{{ p.avatar }}</div>
+        }
         <div class="player-name">{{ p.name }}</div>
         <div class="player-score">{{ p.score | number }}</div>
         <div class="wl-row">
@@ -26,12 +52,14 @@
           <span class="sep">/</span>
           <span class="losses">{{ p.losses }}L</span>
         </div>
-        <div class="wr-row">
-          <div class="wr-track">
-            <div class="wr-fill" [style.width.%]="p.winRate"></div>
+        @if (settings.showWinRate()) {
+          <div class="wr-row">
+            <div class="wr-track">
+              <div class="wr-fill" [style.width.%]="p.winRate"></div>
+            </div>
+            <span class="wr-label">{{ p.winRate }}%</span>
           </div>
-          <span class="wr-label">{{ p.winRate }}%</span>
-        </div>
+        }
       </div>
     }
     @if (filtered().length === 0) {
