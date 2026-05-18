@@ -12,10 +12,4 @@ services:
       - key: NODE_ENV
         value: production
       - key: MONGO_URI
-        fromDatabase:
-          name: gaming-dashboard-db
-          property: connectionString
-
-databases:
-  - name: gaming-dashboard-db
-    plan: free
+        sync: false
