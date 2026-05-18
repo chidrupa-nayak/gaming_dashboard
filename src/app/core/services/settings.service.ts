@@ -4,8 +4,8 @@ const STORAGE_KEY = 'gd-settings';
 
 @Injectable({ providedIn: 'root' })
 export class SettingsService {
-  readonly showAvatars = signal(true);
-  readonly showWinRate = signal(true);
+  showAvatars = signal(true);
+  showWinRate = signal(true);
 
   constructor() {
     try {
