@@ -3,9 +3,6 @@
     <div class="stat-card" [class]="'card-' + card.color">
       <div class="card-top">
         <span class="card-icon">{{ card.icon }}</span>
-        <span class="card-change" [class.positive]="card.change > 0" [class.negative]="card.change < 0">
-          {{ card.change > 0 ? '+' : '' }}{{ card.change }}%
-        </span>
       </div>
       <div class="card-value">{{ card.value }}</div>
       <div class="card-label">{{ card.label }}</div>

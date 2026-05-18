@@ -11,7 +11,7 @@
         <th>Player</th>
         <th>Score</th>
         <th>W/L</th>
-        <th>Win Rate</th>
+        @if (settings.showWinRate()) { <th>Win Rate</th> }
       </tr>
     </thead>
     <tbody>
@@ -19,7 +19,9 @@
         <tr [class]="rankClass(player.rank)">
           <td class="rank-cell">{{ rankMedal(player.rank) }}</td>
           <td class="player-cell">
-            <span class="avatar">{{ player.avatar }}</span>
+            @if (settings.showAvatars()) {
+              <span class="avatar">{{ player.avatar }}</span>
+            }
             {{ player.name }}
           </td>
           <td class="score-cell">{{ player.score | number }}</td>
@@ -28,12 +30,14 @@
             <span class="sep">/</span>
             <span class="losses">{{ player.losses }}L</span>
           </td>
-          <td class="wr-cell">
-            <div class="wr-bar-wrap">
-              <div class="wr-bar" [style.width.%]="player.winRate"></div>
-            </div>
-            <span class="wr-label">{{ player.winRate }}%</span>
-          </td>
+          @if (settings.showWinRate()) {
+            <td class="wr-cell">
+              <div class="wr-bar-wrap">
+                <div class="wr-bar" [style.width.%]="player.winRate"></div>
+              </div>
+              <span class="wr-label">{{ player.winRate }}%</span>
+            </td>
+          }
         </tr>
       }
     </tbody>

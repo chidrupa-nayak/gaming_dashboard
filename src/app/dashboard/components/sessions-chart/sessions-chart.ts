@@ -23,7 +23,7 @@ export class SessionsChartComponent {
         borderColor: '#7de2d1',
         backgroundColor: 'rgba(51, 153, 137, 0.15)',
         pointBackgroundColor: '#7de2d1',
-        pointBorderColor: '#2b2c28',
+        pointBorderColor: '#ffffff',
         pointBorderWidth: 2,
         pointRadius: 5,
         fill: true,
@@ -47,14 +47,14 @@ export class SessionsChartComponent {
     },
     scales: {
       x: {
-        grid: { color: 'rgba(125, 226, 209, 0.07)' },
-        ticks: { color: 'rgba(255, 250, 251, 0.35)' },
-        border: { color: 'rgba(125, 226, 209, 0.1)' }
+        grid: { color: 'rgba(17, 24, 39, 0.07)' },
+        ticks: { color: 'rgba(17, 24, 39, 0.45)' },
+        border: { color: 'rgba(17, 24, 39, 0.1)' }
       },
       y: {
-        grid: { color: 'rgba(125, 226, 209, 0.07)' },
-        ticks: { color: 'rgba(255, 250, 251, 0.35)' },
-        border: { color: 'rgba(125, 226, 209, 0.1)' }
+        grid: { color: 'rgba(17, 24, 39, 0.07)' },
+        ticks: { color: 'rgba(17, 24, 39, 0.45)' },
+        border: { color: 'rgba(17, 24, 39, 0.1)' }
       }
     }
   };

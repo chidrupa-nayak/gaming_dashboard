@@ -1,12 +1,19 @@
+.head-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .filter-tabs {
   display: flex;
   gap: 6px;
 }
 
 .filter-tab {
-  background: rgba(125, 226, 209, 0.06);
-  border: 1px solid rgba(125, 226, 209, 0.15);
-  color: rgba(255, 250, 251, 0.5);
+  background: rgba(17, 24, 39, 0.04);
+  border: 1px solid rgba(17, 24, 39, 0.15);
+  color: rgba(17, 24, 39, 0.5);
   padding: 7px 16px;
   border-radius: 8px;
   cursor: pointer;
@@ -15,21 +22,109 @@
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
-.filter-tab:hover {
-  background: rgba(125, 226, 209, 0.1);
+.filter-tab:hover  { background: rgba(17, 24, 39, 0.07); color: var(--snow); }
+.filter-tab.active { background: rgba(51, 153, 137, 0.22); border-color: var(--verdigris); color: var(--pearl-aqua); }
+
+.log-btn {
+  background: var(--verdigris);
+  border: none;
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.log-btn:hover { opacity: 0.85; }
+
+/* ── Form panel ── */
+.form-panel {
+  background: var(--graphite);
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  border-radius: 12px;
+  padding: 24px;
+  animation: slide-down 0.2s ease;
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.form-title {
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--snow);
+  margin-bottom: 20px;
 }
 
-.filter-tab.active {
-  background: rgba(51, 153, 137, 0.22);
-  border-color: var(--verdigris);
-  color: var(--pearl-aqua);
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
-.match-id   { font-size: 0.78rem; color: rgba(255, 250, 251, 0.35); font-family: monospace; }
-.score-cell { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--pearl-aqua); }
-.duration-cell { color: rgba(255, 250, 251, 0.5); font-size: 0.83rem; }
-.date-cell  { color: rgba(255, 250, 251, 0.4); font-size: 0.83rem; }
+@media (max-width: 800px) {
+  .form-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(17, 24, 39, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.hint { font-weight: 400; text-transform: none; letter-spacing: 0; }
+
+.form-group select,
+.form-group input {
+  background: rgba(17, 24, 39, 0.04);
+  border: 1px solid rgba(17, 24, 39, 0.15);
+  color: var(--snow);
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group select option { background: var(--graphite); }
+.form-group select:focus,
+.form-group input:focus   { border-color: var(--verdigris); }
+.form-group input::placeholder { color: rgba(17, 24, 39, 0.3); }
+
+.submit-btn {
+  background: var(--verdigris);
+  border: none;
+  color: #ffffff;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) { opacity: 0.85; }
+.submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ── Table cells ── */
+.match-id    { font-size: 0.78rem; color: rgba(17, 24, 39, 0.4); font-family: monospace; }
+.score-cell  { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--pearl-aqua); }
+.duration-cell { color: rgba(17, 24, 39, 0.5); font-size: 0.83rem; }
+.date-cell   { color: rgba(17, 24, 39, 0.45); font-size: 0.83rem; }
 .winner-cell { color: var(--pearl-aqua); font-weight: 600; }
 .winner-name { color: var(--snow); font-weight: 600; }
 
@@ -42,20 +137,6 @@
   letter-spacing: 0.04em;
 }
 
-.mode-badge.ranked {
-  background: rgba(51, 153, 137, 0.2);
-  color: var(--verdigris);
-  border: 1px solid rgba(51, 153, 137, 0.4);
-}
-
-.mode-badge.casual {
-  background: rgba(255, 250, 251, 0.07);
-  color: rgba(255, 250, 251, 0.5);
-  border: 1px solid rgba(255, 250, 251, 0.12);
-}
-
-.mode-badge.tournament {
-  background: rgba(125, 226, 209, 0.12);
-  color: var(--pearl-aqua);
-  border: 1px solid rgba(125, 226, 209, 0.3);
-}
+.mode-badge.ranked     { background: rgba(51, 153, 137, 0.2);  color: var(--verdigris);  border: 1px solid rgba(51, 153, 137, 0.4); }
+.mode-badge.casual     { background: rgba(17,24,39,0.06);   color: rgba(17,24,39,0.55); border: 1px solid rgba(17,24,39,0.12); }
+.mode-badge.tournament { background: rgba(125, 226, 209, 0.12); color: var(--pearl-aqua); border: 1px solid rgba(125,226,209,0.3); }
