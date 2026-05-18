@@ -10,6 +10,24 @@
   z-index: 10;
 }
 
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: var(--snow);
+  padding: 4px 6px;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .header { padding: 12px 16px; }
+  .hamburger { display: block; }
+  .time-block { display: none; }
+  .refresh-btn { padding: 7px 12px; font-size: 0.8rem; }
+}
+
 .header-left {
   display: flex;
   align-items: center;

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, effect, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { GameDataService, INTERVAL_MS } from '../../core/services/game-data.service';
+import { LayoutService } from '../../core/services/layout.service';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ import { GameDataService, INTERVAL_MS } from '../../core/services/game-data.serv
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   private gameData = inject(GameDataService);
+  private layout   = inject(LayoutService);
 
   currentTime  = signal(new Date());
   lastUpdated  = this.gameData.lastUpdated;
@@ -40,5 +42,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   refresh(): void {
     this.gameData.refreshData();
+  }
+
+  toggleMenu(): void {
+    this.layout.toggleMobileMenu();
   }
 }

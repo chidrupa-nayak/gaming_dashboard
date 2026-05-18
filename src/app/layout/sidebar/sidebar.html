@@ -1,12 +1,13 @@
-<aside class="sidebar" [class.collapsed]="collapsed()">
+<aside class="sidebar" [class.collapsed]="collapsed()" [class.mobile-open]="mobileMenuOpen()">
   <div class="sidebar-header">
     <span class="logo">🎮</span>
     @if (!collapsed()) {
       <span class="brand">GameHub</span>
     }
-    <button class="toggle-btn" (click)="toggle()"
+    <button class="toggle-btn desktop-only" (click)="toggle()"
       [attr.aria-expanded]="!collapsed()"
       aria-label="Toggle sidebar">{{ collapsed() ? '›' : '‹' }}</button>
+    <button class="toggle-btn mobile-only" (click)="closeMenu()" aria-label="Close menu">✕</button>
   </div>
 
   <nav class="nav" aria-label="Main navigation">
@@ -15,7 +16,8 @@
         class="nav-item"
         [routerLink]="item.route"
         routerLinkActive="active"
-        [title]="item.label">
+        [title]="item.label"
+        (click)="closeMenu()">
         <span class="nav-icon">{{ item.icon }}</span>
         @if (!collapsed()) {
           <span class="nav-label">{{ item.label }}</span>
